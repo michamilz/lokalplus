@@ -11,7 +11,7 @@
 // @match        https://www.shz.de/*
 // @grant        none
 // @run-at       document-idle
-// @updateURL    https://gist.githubusercontent.com/michamilz/6c9c115606c64a4136ee4581d964fa46/raw/svzplus.user.js
+// @updateURL    https://github.com/michamilz/lokalplus/raw/master/lokalplus.user.js.
 // ==/UserScript==
 
 (function() {
