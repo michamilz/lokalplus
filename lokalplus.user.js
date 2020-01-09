@@ -1,21 +1,66 @@
 // ==UserScript==
-// @name         SHZ+, SVZ+, NNN+, Prignitzer+
-// @homepage     https://gist.github.com/michamilz/6c9c115606c64a4136ee4581d964fa46
+// @name         Lokal+
+// @homepage     https://github.com/michamilz/lokalplus
+// @supportURL   https://github.com/michamilz/lokalplus/issues
 // @namespace    http://tampermonkey.net/
-// @version      0.7.0
-// @description  SHZ+, SVZ+, NNN+, Prignitzer+ Artikel ohne Registrierung lesen
+// @version      0.8.0
+// @description  Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
 // @match        https://www.svz.de/*
 // @match        https://www.nnn.de/*
 // @match        https://www.prignitzer.de/*
 // @match        https://www.shz.de/*
-// @grant        none
+// @match        https://www.ostsee-zeitung.de/*
+// @match        https://m.ostsee-zeitung.de/*
+// @match        https://www.ln-online.de/*
+// @match        https://m.ln-online.de/*
+// @match        https://www.maz-online.de/*
+// @match        https://m.maz-online.de/*
+// @match        https://www.lvz.de/*
+// @match        https://m.lvz.de/*
+// @match        https://www.haz.de/*
+// @match        https://m.haz.de/*
+// @match        https://www.neuepresse.de/*
+// @match        https://m.neuepresse.de/*
+// @match        https://www.goettinger-tageblatt.de/*
+// @match        https://m.goettinger-tageblatt.de/*
+// @match        https://www.paz-online.de/*
+// @match        https://m.paz-online.de/*
+// @match        https://www.kn-online.de/*
+// @match        https://m.kn-online.de/*
+// @match        https://www.sn-online.de/*
+// @match        https://m.sn-online.de/*
+// @match        https://www.waz-online.de/*
+// @match        https://m.waz-online.de/*
+// @match        https://www.dnn.de/*
+// @match        https://m.dnn.de/*
+// @grant        GM_xmlhttpRequest
 // @run-at       document-idle
 // @updateURL    https://github.com/michamilz/lokalplus/raw/master/lokalplus.user.js
+// @connect      archive.org
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
+        var datum = [...$(".pdb-article-publicationdate").text().matchAll(/(\d{2,4})/gm)];
+        var timestamp = datum[4][0]+datum[3][0]+datum[2][0];
+        var url = document.querySelector("link[rel='canonical']").getAttribute("href");
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: "https://archive.org/wayback/available?timestamp="+timestamp+"&url="+encodeURIComponent(url),
+            responseType: "json",
+            onload: function(response) {
+                if (typeof response.response.archived_snapshots.closest.url !== 'undefined') {
+                    var content = $("<h2>Artikel im Internet Archiv <a href='"+response.response.archived_snapshots.closest.url+"' target='_blank'>lesen</a>.<br>Auf weitere Versionen <a href='http://web.archive.org/web/*/"+document.location.href+"' target='_blank'>prüfen</a>.<br>");
+                    content.insertAfter('.pdb-article-body-paidcontentintro');
+                    $('.pdb-parts-paidcontent-freeuntilbadge.pdb-parts-paidcontent-freeuntilbadge_article.pdb-parts-paidcontent-freeuntilbadge_close').prepend("<a href='"+response.response.archived_snapshots.closest.url+"' target='_blank'>🔓</a> ");
+                }
+                console.log(response);
+            }
+        });
+    }
 
     if($("#premium-container").length > 0) {
         $.ajax({

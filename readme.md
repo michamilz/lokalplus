@@ -1,13 +1,20 @@
-# SHZ+, SVZ+, Prignitzer+ und NNN+ Artikel ohne Anmeldung lesen
+# Lokal+
 
-Dieses Skript erlaubt dir, die Plus-Artikel von SHZ, SVZ, NNN und Prignitzer ohne die sonst notwendige Anmeldung zu lesen. 
+Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 
-Wenn du das automatisiert haben möchtest, sind die folgenden Schritte notwendig:
+* [SHZ](https://www.shz.de), [SVZ](https://www.svz.de), [Der Prignitzer](https://wwwprignitzer.de) und [NNN](https://www.nnn.de) mit direkter Anzeige des Artikels
+* [Ostsee Zeitung](https://www.ostsee-zeitung.de/), [Lübecker Nachrichten](https://www.ln-online.de/), [Märkische Allgemeine](https://www.maz-online.de/), [Leipziger Volkszeitung](https://www.lvz.de/), [Hannoversche Allgemeine](https://www.haz.de/), [Neue Presse](https://www.neuepresse.de/), [Göttinger Tageblatt]( https://www.goettinger-tageblatt.de/), [Peiner Allgemeine](https://www.paz-online.de/), [Kieler Nachrichten](https://www.kn-online.de/), [Schaumburger Nachrichten](https://www.sn-online.de/), [Wolfsburger Allgemeine](https://www.waz-online.de/), [Dresdner Neueste Nachrichten](https://www.dnn.de/) mit einer Verlinkung auf eine lesbare Version des Artikels
+
+## Installation
+
+Die Funktion wurde mit dem hervorragenden [Firefox](https://www.mozilla.org/de/firefox/new/) entwickelt und funktioniert sowohl auf dem Desktop als auch auf deinem mobilen Endgerät. Vielleicht funktioniert es auch in anderen Browsern. :)
 
 1. installiere dieses Add-On für deinen Browser => [Tampermonkey](https://tampermonkey.net)
-2. klicke dann auf diesen Link => [hier](https://gist.githubusercontent.com/michamilz/6c9c115606c64a4136ee4581d964fa46/raw/svzplus.user.js) und installiere in Tampermonkey das angebotene Skript 
+2. klicke dann auf [diesen Link](https://github.com/michamilz/lokalplus/raw/master/lokalplus.user.js) und installiere in Tampermonkey das angebotene Skript 
 
-Danach wird der verstümmelte Text automatisch gegen die lesbare Version ausgetauscht. Wer regelmäßig liest, sollte eine Abo in Betracht ziehen: https://mein.svz.de/ oder https://mein.shz.de/
+## Abos
+
+Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft eine Abo in Betracht ziehen.
 
 ## Credits
 
