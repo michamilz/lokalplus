@@ -18,7 +18,7 @@ Zum Deaktivieren oder Deinstallieren dieses Skriptes kannst du [dieser Anleitung
 
 ## Abos
 
-Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft eine Abo in Betracht ziehen.
+Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft ein Abo in Betracht ziehen.
 
 ## Credits
 
