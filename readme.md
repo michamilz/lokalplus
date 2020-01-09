@@ -23,7 +23,7 @@ Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft ein Abo in Betracht zi
 ## Credits
 
 * https://twitter.com/trockenasche
-* https://twitter.com/micha_milz
+* https://twitter.com/michamilz
 * https://twitter.com/memysqlandi
 
 ## Änderungen
