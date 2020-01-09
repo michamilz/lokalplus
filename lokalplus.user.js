@@ -2,7 +2,7 @@
 // @name         SHZ+, SVZ+, NNN+, Prignitzer+
 // @homepage     https://gist.github.com/michamilz/6c9c115606c64a4136ee4581d964fa46
 // @namespace    http://tampermonkey.net/
-// @version      0.6.9
+// @version      0.7.0
 // @description  SHZ+, SVZ+, NNN+, Prignitzer+ Artikel ohne Registrierung lesen
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
 // @match        https://www.svz.de/*
@@ -47,6 +47,23 @@
                 /* Fotograf am Bild zeigen */
                 content.find('.photographer').css({"font-size":"13px", "margin":"0", "position":"relative", "left":"10px", "top":"-20px", "color":"white", "text-shadow":"0px 0px 5px black"});
                 content.find('.photographer svg').css({"height":"14px", "fill":"white"});
+
+                /* 3Q Video */
+                var video3qTag = content.find('amp-3q-player');
+                if (typeof video3qTag !== "undefined") {
+                    var video3qId = content.find('amp-3q-player').attr('data-id');
+                    var video3qIframe = '<iframe width="640" height="320" src="https://playout.3qsdn.com/' + video3qId + '?autoplay=false"></iframe>';
+                    video3qTag.replaceWith(video3qIframe);
+                }
+
+                /* YouTube Video */
+                var youtubeTag = content.find('amp-youtube');
+                if (typeof youtubeTag !== "undefined") {
+                    var youtubeId = content.find('amp-youtube').attr('data-videoid');
+                    console.log('TÄST', youtubeId);
+                    var youtubeIframe = '<iframe width="640" height="320" src="https://www.youtube.com/embed/' + youtubeId + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    youtubeTag.replaceWith(youtubeIframe);
+                }
 
                 var s = content.html();
                 content = $(s.replace(/<amp-img /g, '<img '));

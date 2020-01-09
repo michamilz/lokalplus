@@ -17,6 +17,10 @@ Danach wird der verstümmelte Text automatisch gegen die lesbare Version ausgeta
 
 ## Änderungen
 
+### Version 0.7.0
+
+YouTube und 3Q Videos werden angezeigt
+
 ### Version 0.6.9
 
 Um Verzerrungen zu vermeiden, die Höhe der Bilder auf "auto" gesetzt.
