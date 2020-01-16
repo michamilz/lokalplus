@@ -1,3 +1,5 @@
+![Lokal+](https://repository-images.githubusercontent.com/232569671/02aabc80-387e-11ea-9893-f4674a65dd95)
+
 # Lokal+
 
 Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
