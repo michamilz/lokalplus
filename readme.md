@@ -28,6 +28,10 @@ Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft ein Abo in Betracht zi
 
 ## Änderungen
 
+### Version 0.9.0
+
+Für alle genannten Lokalzeitungen wird die AMP Version verlinkt und dessen Ausgabe "optimiert".
+
 ### Version 0.8.0
 
 Für die Plus-Artikel von [Ostsee Zeitung](https://www.ostsee-zeitung.de/), [Lübecker Nachrichten](https://www.ln-online.de/), [Märkische Allgemeine](https://www.maz-online.de/), [Leipziger Volkszeitung](https://www.lvz.de/), [Hannoversche Allgemeine](https://www.haz.de/), [Neue Presse](https://www.neuepresse.de/), [Göttinger Tageblatt]( https://www.goettinger-tageblatt.de/), [Peiner Allgemeine](https://www.paz-online.de/), [Kieler Nachrichten](https://www.kn-online.de/), [Schaumburger Nachrichten](https://www.sn-online.de/), [Wolfsburger Allgemeine](https://www.waz-online.de/) und [Dresdner Neueste Nachrichten](https://www.dnn.de/) wird im [Internet Archiv](http://web.archive.org/) nach einer Version gesucht und diese verlinkt.
