@@ -3,38 +3,43 @@
 // @homepage     https://github.com/michamilz/lokalplus
 // @supportURL   https://github.com/michamilz/lokalplus/issues
 // @namespace    http://tampermonkey.net/
-// @version      0.8.0
+// @version      0.9.0
 // @description  Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
-// @match        https://www.svz.de/*
-// @match        https://www.nnn.de/*
-// @match        https://www.prignitzer.de/*
-// @match        https://www.shz.de/*
-// @match        https://www.ostsee-zeitung.de/*
-// @match        https://m.ostsee-zeitung.de/*
-// @match        https://www.ln-online.de/*
-// @match        https://m.ln-online.de/*
-// @match        https://www.maz-online.de/*
-// @match        https://m.maz-online.de/*
-// @match        https://www.lvz.de/*
-// @match        https://m.lvz.de/*
-// @match        https://www.haz.de/*
-// @match        https://m.haz.de/*
-// @match        https://www.neuepresse.de/*
-// @match        https://m.neuepresse.de/*
-// @match        https://www.goettinger-tageblatt.de/*
-// @match        https://m.goettinger-tageblatt.de/*
-// @match        https://www.paz-online.de/*
-// @match        https://m.paz-online.de/*
-// @match        https://www.kn-online.de/*
-// @match        https://m.kn-online.de/*
-// @match        https://www.sn-online.de/*
-// @match        https://m.sn-online.de/*
-// @match        https://www.waz-online.de/*
-// @match        https://m.waz-online.de/*
-// @match        https://www.dnn.de/*
-// @match        https://m.dnn.de/*
+// @match        https://*.svz.de/*
+// @match        https://www-svz-de.cdn.ampproject.org/*
+// @match        https://*.nnn.de/*
+// @match        https://www-nnn-de.cdn.ampproject.org/*
+// @match        https://*.prignitzer.de/*
+// @match        https://www-prignitzer-de.cdn.ampproject.org/*
+// @match        https://*.shz.de/*
+// @match        https://www-shz-de.cdn.ampproject.org/*
+// @match        https://*.ostsee-zeitung.de/*
+// @match        https://m-ostsee--zeitung-de.cdn.ampproject.org/*
+// @match        https://*.ln-online.de/*
+// @match        https://m-ln--online-de.cdn.ampproject.org/*
+// @match        https://*.maz-online.de/*
+// @match        https://m-maz--online-de.cdn.ampproject.org/*
+// @match        https://*.lvz.de/*
+// @match        https://m-lvz-de.cdn.ampproject.org/*
+// @match        https://*.haz.de/*
+// @match        https://m-haz-de.cdn.ampproject.org/*
+// @match        https://*.neuepresse.de/*
+// @match        https://m-neuepresse-de.cdn.ampproject.org/*
+// @match        https://*.goettinger-tageblatt.de/*
+// @match        https://m-goettinger--tageblatt-de.cdn.ampproject.org/*
+// @match        https://*.paz-online.de/*
+// @match        https://m-paz--online-de.cdn.ampproject.org/*
+// @match        https://*.kn-online.de/*
+// @match        https://m-kn--online-de.cdn.ampproject.org/*
+// @match        https://*.sn-online.de/*
+// @match        https://m-sn--online-de.cdn.ampproject.org/*
+// @match        https://*.waz-online.de/*
+// @match        https://m-waz--online-de.cdn.ampproject.org/*
+// @match        https://*.dnn.de/*
+// @match        https://m-dnn-de.cdn.ampproject.org/*
 // @grant        GM_xmlhttpRequest
+// @grant        GM_addStyle
 // @run-at       document-idle
 // @updateURL    https://github.com/michamilz/lokalplus/raw/master/lokalplus.user.js
 // @connect      archive.org
@@ -43,6 +48,46 @@
 (function() {
     'use strict';
 
+    // ⚡ AMP - Darstellung
+    if (document.querySelector("html[i-amphtml-layout='']") != null) {
+        console.log('is ⚡');
+        GM_addStyle('html { max-width: 50rem; margin-left: auto !important; margin-right: auto !important;}');
+        // Remove Ads
+        GM_addStyle('html body amp-ad { display: none !important;}');
+        GM_addStyle('html body amp-fx-flying-carpet { display: none !important;}');
+        GM_addStyle('html body amp-embed { display: none !important;}');
+        // Subscriptions
+        GM_addStyle('body .showContent[subscriptions-section="content"] { display: block !important;}');
+        GM_addStyle('body [subscriptions-section="content-not-granted"] { display: none;}');
+        // Access
+        GM_addStyle('body [amp-access="NOT p.showRegWall AND NOT p.showPayWall"][amp-access-hide] { display: block !important;}');
+        GM_addStyle('body [amp-access="NOT loggedIn"] { display: none;}');
+    }
+
+    // Existiert eine ⚡ AMP - Version?
+    if (document.querySelector("link[rel='amphtml']") != 'null') {
+        /*
+        var ld_text = document.querySelector("script[type='application/ld+json']").textContent;
+        var ld = JSON.parse(ld_text);
+        console.log(ld);
+        */
+        var amphtml = document.querySelector("link[rel='amphtml']").getAttribute("href");
+        console.log(amphtml);
+        //if (ld['@type'] == 'NewsArticle') { // && ld.isAccessibleForFree == "False") {
+            // Madsack
+            if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
+                $('.pdb-parts-paidcontent-freeuntilbadge.pdb-parts-paidcontent-freeuntilbadge_article.pdb-parts-paidcontent-freeuntilbadge_close').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡</a> ");
+                var content = $("<h2>Lesbare Version des <a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>Artikels</a><br>");
+                content.insertAfter('.pdb-article-body-paidcontentintro');
+            }
+            // SHZ
+            if($("#premium-container").length > 0) {
+                $('h1#head-anchor > .vhide').after("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡</a> ");
+            }
+        //}
+    }
+
+    // Madsack
     if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
         var datum = [...$(".pdb-article-publicationdate").text().matchAll(/(\d{2,4})/gm)];
         var timestamp = datum[4][0]+datum[3][0]+datum[2][0];
@@ -62,6 +107,7 @@
         });
     }
 
+    // SHZ
     if($("#premium-container").length > 0) {
         $.ajax({
             url: window.location.href.replace('.html', '-amp.html'),
@@ -118,4 +164,3 @@
         });
     }
 })();
-
