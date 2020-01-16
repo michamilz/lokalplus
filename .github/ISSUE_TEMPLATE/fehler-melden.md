@@ -13,6 +13,9 @@ Die URL zum Artikel, den du lesen möchtest?
 **Soll das Skript dort funktionieren?**
 Wird die Lokalzeitung in der README verlinkt?
 
+**Hast du über ein Abo nachgedacht?**
+Lokaljournalismus braucht Geld zum überleben. Warum möchtest du kein Abo abschließen?
+
 **Was hast du erwartet?**
 Welche Erwartung hattest du an das Skript?
 
