@@ -14,6 +14,12 @@ Die Funktion wurde mit dem hervorragenden [Firefox](https://www.mozilla.org/de/f
 1. installiere dieses Add-On für deinen Browser => [Tampermonkey](https://tampermonkey.net)
 2. klicke dann auf [diesen Link](https://github.com/michamilz/lokalplus/raw/master/lokalplus.user.js) und installiere in Tampermonkey das angebotene Skript
 
+## Nutzung
+
+![Lokal+](https://github.com/michamilz/lokalplus/raw/master/screenshot.png)
+
+Wenn eine lesbare Version des Artikels gefunden wird, erscheinen, wie im Screenshot zu sehen, die jewiligen Links bzw Icons am Artikel.
+
 ## Deaktivieren / Deinstallieren
 
 Zum Deaktivieren oder Deinstallieren dieses Skriptes kannst du [dieser Anleitung](https://www.wikihow.com/Delete-a-Script-in-Tampermonkey) folgen. Das Skript erscheint in der Übersicht mit dem Namen "Lokal+".
