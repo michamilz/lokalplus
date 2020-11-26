@@ -4,7 +4,7 @@
 
 Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 
-* [SHZ](https://www.shz.de), [SVZ](https://www.svz.de), [Der Prignitzer](https://www.prignitzer.de) und [NNN](https://www.nnn.de) mit direkter Anzeige des Artikels
+* [SHZ](https://www.shz.de), [SVZ](https://www.svz.de), [Der Prignitzer](https://www.prignitzer.de) und [NNN](https://www.nnn.de) mit ~~direkter Anzeige~~ einer Verlinkung auf eine lesbare Version des Artikels
 * [Ostsee Zeitung](https://www.ostsee-zeitung.de/), [Lübecker Nachrichten](https://www.ln-online.de/), [Märkische Allgemeine](https://www.maz-online.de/), [Leipziger Volkszeitung](https://www.lvz.de/), [Hannoversche Allgemeine](https://www.haz.de/), [Neue Presse](https://www.neuepresse.de/), [Göttinger Tageblatt]( https://www.goettinger-tageblatt.de/), [Peiner Allgemeine](https://www.paz-online.de/), [Kieler Nachrichten](https://www.kn-online.de/), [Schaumburger Nachrichten](https://www.sn-online.de/), [Wolfsburger Allgemeine](https://www.waz-online.de/), [Dresdner Neueste Nachrichten](https://www.dnn.de/) mit einer Verlinkung auf eine lesbare Version des Artikels
 
 ## Installation
@@ -29,6 +29,10 @@ Wer regelmäßig die Plus-Artikel liest, sollte ernsthaft ein Abo in Betracht zi
 * https://twitter.com/memysqlandi
 
 ## Änderungen
+
+### Version 0.9.2
+
+Für SHZ, SVZ, Der Prignitzer und NNN wird der Link zur AMP Version wieder angezeigt.
 
 ### Version 0.9.0
 
