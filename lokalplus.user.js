@@ -5,7 +5,7 @@
 // @updateURL    https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @downloadURL  https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.9.1
+// @version      0.9.2
 // @description  Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
 // @match        https://*.svz.de/*
@@ -82,8 +82,8 @@
                 content.insertAfter('.pdb-article-body-paidcontentintro');
             }
             // SHZ
-            if($("#premium-container").length > 0) {
-                $('h1#head-anchor > .vhide').after("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡</a> ");
+            if($(".lead + .paywall").length > 0) {
+                $('.lead').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡ - Lesbare Version</a> - ");
             }
         //}
     }
