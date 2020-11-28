@@ -5,7 +5,7 @@
 // @updateURL    https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @downloadURL  https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.9.2
+// @version      0.9.3
 // @description  Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
 // @match        https://*.svz.de/*
@@ -78,12 +78,12 @@
             // Madsack
             if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
                 $('.pdb-parts-paidcontent-freeuntilbadge.pdb-parts-paidcontent-freeuntilbadge_article.pdb-parts-paidcontent-freeuntilbadge_close').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡</a> ");
-                var content = $("<h2>Lesbare Version des <a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>Artikels</a><br>");
+                var content = $("<h2>Artikel ohne Registrierung <a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>HIER lesen</a><br>");
                 content.insertAfter('.pdb-article-body-paidcontentintro');
             }
             // SHZ
             if($(".lead + .paywall").length > 0) {
-                $('.lead').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡ - Lesbare Version</a> - ");
+                $('.lead').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡ - HIER Artikel ohne Registrierung lesen</a> - ");
             }
         //}
     }
