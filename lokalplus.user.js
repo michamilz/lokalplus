@@ -5,7 +5,7 @@
 // @updateURL    https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @downloadURL  https://raw.githubusercontent.com/michamilz/lokalplus/master/lokalplus.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.9.3
+// @version      0.9.4
 // @description  Dieses Userscript erlaubt dir, die Plus-Artikel von den weiter unten aufgeführten Lokalzeitungen ohne die sonst notwendige Anmeldung zu lesen.
 // @author       Micha Milz & Murdoc Bates & Mr. Ronald
 // @match        https://*.svz.de/*
@@ -52,7 +52,7 @@
     // ⚡ AMP - Darstellung
     if (document.querySelector("html[i-amphtml-layout='']") != null) {
         console.log('is ⚡');
-        GM_addStyle('html { max-width: 50rem; margin-left: auto !important; margin-right: auto !important;}');
+        GM_addStyle('html { max-width: 75rem; margin-left: auto !important; margin-right: auto !important;}');
         // Remove Ads
         GM_addStyle('html body amp-ad { display: none !important;}');
         GM_addStyle('html body amp-fx-flying-carpet { display: none !important;}');
@@ -61,7 +61,7 @@
         GM_addStyle('body .showContent[subscriptions-section="content"] { display: block !important;}');
         GM_addStyle('body [subscriptions-section="content-not-granted"] { display: none;}');
         // Access
-        GM_addStyle('body [amp-access="NOT p.showRegWall AND NOT p.showPayWall"][amp-access-hide] { display: block !important;}');
+        GM_addStyle('body [amp-access][amp-access-hide] { display: block !important;}');
         GM_addStyle('body [amp-access="NOT loggedIn"] { display: none;}');
     }
 
@@ -76,20 +76,22 @@
         console.log(amphtml);
         //if (ld['@type'] == 'NewsArticle') { // && ld.isAccessibleForFree == "False") {
             // Madsack
-            if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
+            if(document.querySelector("#erasmo.pdb-article-paidcontent-registration") !== null) {
                 $('.pdb-parts-paidcontent-freeuntilbadge.pdb-parts-paidcontent-freeuntilbadge_article.pdb-parts-paidcontent-freeuntilbadge_close').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡</a> ");
                 var content = $("<h2>Artikel ohne Registrierung <a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>HIER lesen</a><br>");
                 content.insertAfter('.pdb-article-body-paidcontentintro');
             }
             // SHZ
-            if($(".lead + .paywall").length > 0) {
-                $('.lead').prepend("<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡ - HIER Artikel ohne Registrierung lesen</a> - ");
+            if(document.querySelector(".paywall") !== null) {
+                const div = document.createElement('div');
+                div.innerHTML = "<a href='https://cdn.ampproject.org/c/s/"+amphtml.substr(8)+"' target='_blank'>⚡ - HIER Artikel ohne Registrierung lesen</a>";
+                document.querySelector(".paywall").prepend(div);
             }
         //}
     }
 
     // Madsack
-    if($("#erasmo.pdb-article-paidcontent-registration").length > 0) {
+    if(document.querySelector("#erasmo.pdb-article-paidcontent-registration") !== null) {
         var datum = [...$(".pdb-article-publicationdate").text().matchAll(/(\d{2,4})/gm)];
         var timestamp = datum[4][0]+datum[3][0]+datum[2][0];
         var url = document.querySelector("link[rel='canonical']").getAttribute("href");
